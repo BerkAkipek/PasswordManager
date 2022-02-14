@@ -39,14 +39,14 @@ def save_data():
                 f"Password: {password}\nIs it okay to save?")
         if is_okay_to_save:
             try:
-                with open(file="/home/ltdt/vscode/password-manager-start/data.json", mode="r") as file:
+                with open(file="data.json", mode="r") as file:
                     data = json.load(file)
             except FileNotFoundError:
-                with open(file="/home/ltdt/vscode/password-manager-start/data.json", mode="w") as file:
+                with open(file="data.json", mode="w") as file:
                     json.dump(new_data, file, indent=4)
             else:
                 data.update(new_data)
-                with open(file="/home/ltdt/vscode/password-manager-start/data.json", mode="w") as file:
+                with open(file="data.json", mode="w") as file:
                     json.dump(data, file, indent=4)
             finally:
                 website_entry.delete(0, END)
@@ -56,7 +56,7 @@ def save_data():
 def find_password():
     website = website_entry.get().title()
     try:
-        with open("/home/ltdt/vscode/password-manager-start/data.json") as data_file:
+        with open("data.json") as data_file:
             data = json.load(data_file)
     except FileNotFoundError:
         messagebox.showinfo(title="Error", message="There is no data file exists.")
@@ -76,7 +76,7 @@ screen.config(padx=50, pady=50, bg="white")
 # screen.geometry("500x400")
 
 canvas = Canvas(bg="white", height=200, width=200, highlightthickness=0)
-password_img = PhotoImage(file="/home/ltdt/vscode/password-manager-start/logo.png")
+password_img = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=password_img)
 canvas.grid(column=1, row=0)
 
